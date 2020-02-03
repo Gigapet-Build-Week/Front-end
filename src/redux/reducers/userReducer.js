@@ -43,5 +43,7 @@ export const userReducer = () => {
         return {
          
         }
+      default: 
+        return state
     }*/
 }
