@@ -2,17 +2,29 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 export default function App() {
-  const { register, handleSubmit } = useForm()
-  const onSubmit = (data, e) => {
-    console.log('Submit event', e)
-    alert(JSON.stringify(data))
-  };
+  const { register, handleSubmit, errors, reset } = useForm();
+  const onSubmit = data => console.log(data);
+  console.log(errors);
 
   return (
-    <form onSubmit={handleSubmit(async (data) => await fetchAPI(data))}>
-      <input name="UserName" ref={register} />
-      <input name="Password" ref={register} />
-      <button type="submit">Submit</button>
+    
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input type="text" placeholder="UserName" name="UserName" ref={register} />
+      <input type="text" placeholder="Password" name="Password" ref={register} />
+      
+      <input type="submit" />
+
+      <input type="reset" /> // standard reset button
+      <input type="button" onClick={reset} />
+      <input
+        type="button"
+        onClick={() => {
+          reset({
+            firstName: "bill",
+            lastName: "luo"
+          });
+        }}
+      />
     </form>
-  )
-};
+  );
+}
