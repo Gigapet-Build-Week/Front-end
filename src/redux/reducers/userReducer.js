@@ -1,51 +1,65 @@
 import {
     LOGIN_START,
     LOGIN_SUCCESS,
-    LOGIN_FAILURE,
     REGISTER_START,
     REGISTER_SUCCESS,
-    REGISTER_FAULURE
+    GET_CHILD_START,
+    GET_CHILD_SUCCESS
 } from '../actions/userActions';
 
-/*theorized state for user
 const initialState = {
-    id: null,
     children: [],
     loggingIn: false,
-    error: ''
+    gettingChild: false,
+    error: ""
 }
-*/
 
-export const userReducer = () => {
-                        /*state = initialState, action) => {
+export const userReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOGIN_START:
         return {
-         
+          ...state,
+          loggingIn: true,
+          error: ""
         };
       case LOGIN_SUCCESS:
         return {
-         
+          ...state,
+          loggingIn: false,
+          error: ""
         };
-      case LOGIN_FAILURE:
-        return {
-         
-        }
       case REGISTER_START:
         return {
-         
+          ...state,
+          loggingIn: true,
+          error: ""
         };
       case REGISTER_SUCCESS:
         return {
-         
+          ...state,
+          loggingIn: false,
+          error: ""
         };
-      case REGISTER_FAULURE:
+      case GET_CHILD_START:
         return {
-         
-        }
+          ...state,
+          gettingChild: true,
+          error: ""
+        };
+      case GET_CHILD_SUCCESS:
+        return {
+          ...state,
+          gettingChild: true,
+          error: ""
+        };
       default: 
         return state
+<<<<<<< HEAD
     }*/
 }
 
 export default userReducer
+=======
+    }
+}
+>>>>>>> b14264c3951c92670f759a237d3971d2677dfca4
