@@ -54,12 +54,8 @@ export const userReducer = (state = initialState, action) => {
         };
       default: 
         return state
-<<<<<<< HEAD
-    }*/
-}
-
-export default userReducer
-=======
     }
 }
->>>>>>> b14264c3951c92670f759a237d3971d2677dfca4
+
+
+export default userReducer;

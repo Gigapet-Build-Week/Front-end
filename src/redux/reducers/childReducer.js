@@ -52,4 +52,4 @@ export const childReducer = (state = initialState, action) => {
     }
 }
 
-export default childReducer
+export default childReducer;

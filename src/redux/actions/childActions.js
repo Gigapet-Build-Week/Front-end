@@ -10,34 +10,34 @@ export const DELETE_ENTRY_SUCCESS = "DELETE_ENTRY_SUCCESS";
 export const newEntry = (/*Entry from form*/) => dispatch => {
     //post request
     dispatch({ type: NEW_ENTRY_START })
-    axiosWithAuth()
+    authAxios()
     .post(`/entry url`, /*Entry from form*/)
     .then(response => {
         dispatch({ type: NEW_ENTRY_SUCCESS, payload: response})
     })
     .catch(error => console.log('Post error:', error)); //possibly error.message
 }
-export const editEntry = event => {
+export const editEntry = event => dispatch =>{
     event.preventDefault()
     //put request
     dispatch({ type: EDIT_ENTRY_START })
-    axiosWithAuth()
-    .put(`/entry url/${entryToEdit.id}`, entryToEdit)
+    authAxios()
+    .put(/*`/entry url/${entryToEdit.id}`, entryToEdit*/)
     .then(response => {
         dispatch({ type: EDIT_ENTRY_SUCCESS, payload: response.data })
-        /*figure out with state how to establish edit */
+        /* figure out with state how to establish edit */
     })
     .catch(error => console.log('Put error:', error)); //possibly error.message
 }
 
-export const deleteEntry = (/*Entry from form*/) => {
+export const deleteEntry = (/*Entry from form*/) => dispatch =>{
     //delete request
     dispatch({ type: EDIT_ENTRY_START })
-    axiosWithAuth()
-    .delete(`/entry url/${entry.id}`)
+    authAxios()
+    .delete(/*`/entry url/${entry.id}`*/)
     .then(response => {
        dispatch({ type: EDIT_ENTRY_SUCCESS, payload: response.data})
-       /*figure out with state how to establish delete */
+       /* figure out with state how to establish delete */
     })
     .catch(error => console.log('Delete error:', error)); //possibly error.message
 }
