@@ -44,7 +44,7 @@ export const register = creds => dispatch => {
     .catch(error => console.log('Register error:', error)); //possibly error.message
 }
 
-export const getChild = () => {
+export const getChild = () => dispatch => {
     /*import this function to ChildPage, put on getChildren
     import withRouter form react-router-dom
     import {connect } from react-redux
