@@ -51,3 +51,5 @@ export const childReducer = (state = initialState, action) => {
         return state;
     }
 }
+
+export default childReducer
