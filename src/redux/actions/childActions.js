@@ -25,7 +25,7 @@ export const editEntry = event => dispatch =>{
     .put(/*`/entry url/${entryToEdit.id}`, entryToEdit*/)
     .then(response => {
         dispatch({ type: EDIT_ENTRY_SUCCESS, payload: response.data })
-        /*figure out with state how to establish edit */
+        /* figure out with state how to establish edit */
     })
     .catch(error => console.log('Put error:', error)); //possibly error.message
 }
@@ -37,7 +37,7 @@ export const deleteEntry = (/*Entry from form*/) => dispatch =>{
     .delete(/*`/entry url/${entry.id}`*/)
     .then(response => {
        dispatch({ type: EDIT_ENTRY_SUCCESS, payload: response.data})
-       /*figure out with state how to establish delete */
+       /* figure out with state how to establish delete */
     })
     .catch(error => console.log('Delete error:', error)); //possibly error.message
 }
