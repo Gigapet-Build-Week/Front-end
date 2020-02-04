@@ -20,8 +20,8 @@ export default function App() {
         type="button"
         onClick={() => {
           reset({
-            firstName: "bill",
-            lastName: "luo"
+            UserName: " ",
+            Password: " ", 
           });
         }}
       />
