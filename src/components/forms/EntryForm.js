@@ -10,11 +10,11 @@ export default function App() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <select name="Category" ref={register}>
-        <option value="Fruit">Fruit</option>
-        <option value=" Vegetable"> Vegetable</option>
+        <option value="Fruits & Vegetable">FruitsVegetables</option>
         <option value=" Grain"> Grain</option>
         <option value=" Protein"> Protein</option>
         <option value=" Dairy"> Dairy</option>
+        <option value=" Oils & Fats"> OilsFats</option>
         <option value=" Sugars"> Sugars</option>
       </select>
       <input type="number" placeholder="Serving Size" name="Serving Size" ref={register({min: 0})} />
