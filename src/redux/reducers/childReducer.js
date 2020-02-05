@@ -15,7 +15,7 @@ const initialState = {
     */
 }
 
-export const childReducer = (state = initialState, action) => {
+const childReducer = (state = initialState, action) => {
     switch(action.type) {
       case  NEW_ENTRY_START:
         return {
