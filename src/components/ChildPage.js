@@ -75,7 +75,7 @@ class ChildPage extends React.Component {
 
 const mapStateToProps = state => ({
     error: state.error,
-    loggingIn: state.loggingIn
+    children: state.children
   });
   
 export default connect( mapStateToProps, { getChild, addChild })(ChildPage);
