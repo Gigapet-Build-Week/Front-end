@@ -52,6 +52,7 @@ const userReducer = (state = initialState, action) => {
         return {
           ...state,
           gettingChild: true,
+          children: action.payload,
           error: ""
         };
       case ADD_CHILD:

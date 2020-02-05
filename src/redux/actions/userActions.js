@@ -34,15 +34,7 @@ export const register = creds => dispatch => {
 }
 
 export const getChild = () => dispatch => {
-    /*import this function to ChildPage, put on getChildren
-    import withRouter form react-router-dom
-    import {connect } from react-redux
-    <>
-    <>mapStateToProps = state => ({
-        children and gettingChildren and error
-    })
-    <> on export withRouter( connect(MSTP, {getChild})(ChildPage) ) 
-    */
+    /*import with Router? */
     dispatch({ GET_CHILD_START })
     authAxios()
     .get("/children")
