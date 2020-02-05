@@ -1,17 +1,26 @@
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 // import styled from 'styled-components';
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
+class LoginForm extends React.Component {
+  
+// const { register, handleSubmit, errors } = useForm();
+// console.log(errors);
 
-export default function App() {
-  const { register, handleSubmit, errors } = useForm();
-  console.log(errors);
+  render(){
+    return (
+      <div>
+        <form onSubmit={(e) => this.handleSumbmit(e)}>
+          <input type="text" placeholder="Username" name="Username"  />
+          <input type="text" placeholder="Password" name="Password" />
+          <input type="submit" />
+        </form>
 
-  return (
-    <form onSubmit={handleSubmit(async (data) => await fetchAPI(data))}>
-      <input type="text" placeholder="Username" name="Username" ref={register({required: true, pattern: /^\S+@\S+$/i})} />
-      <input type="text" placeholder="Password" name="Password" ref={register} />
-      <input type="submit" />
-    </form>
-  );
+        <Link to={`/register`}>Register</Link>  
+      </div>
+  )};
+
 };
+
+export default LoginForm;
