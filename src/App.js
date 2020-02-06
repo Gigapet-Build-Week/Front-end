@@ -18,12 +18,10 @@ function App() {
 
       </nav>
       <h1>Gigapet</h1>
-      <Route>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/register" component={RegistryForm} />
         <PrivateRoute exact path="/mainPage" component={MainPage}/>
         <PrivateRoute exact path="/childPage" component={ChildPage}/>
-      </Route>
     </div>
   );
 }

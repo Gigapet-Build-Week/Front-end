@@ -12,8 +12,9 @@ export const ADD_CHILD = "ADD_CHILD";
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN_START });
     return authAxios()
-    .post("/auth/login", creds) //possible different name for page
+    .post("https://gigapet-health.herokuapp.com/api/auth/login", creds) //possible different name for page
     .then(response => {
+        console.log(response);
       localStorage.setItem("token", response.data.payload);
       dispatch({ type: LOGIN_SUCCESS });
       return true;

@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import HappyDoggo from './images/gigapet-happy-dog.png';
 import NeutralDoggo from './images/gigapet-neutral-dog.png';
 import UnhappyDoggo from './images/gigapet-sad-dog.png';
-/*
 
-take in props from "form" and decide what gigapet to show
-
-map through data multiply each category by serving per category
-sum them to find "health" the value in database for the total.
-*/
 class Gigapet extends React.Component {
+
+    /*
+    map through data multiply each category by serving per category
+    sum them to find "health" the value in database for the total.
+
+    
+    */
 
     determineGigapet = (totalPoints) => {
         if (totalPoints >= 20) {
@@ -27,7 +28,7 @@ class Gigapet extends React.Component {
         return (
             <div>
                 <h1>Gigapet Avatar</h1>
-                {this.determineGigapet}
+                {this.determineGigapet()}
             </div>
         )
     }

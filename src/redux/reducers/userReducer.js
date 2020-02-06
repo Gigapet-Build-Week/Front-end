@@ -11,6 +11,7 @@ import {
 const initialState = {
     children: [],
     loggingIn: false,
+    loggedIn: false,
     registering: false,
     gettingChild: false,
     error: ""
@@ -28,6 +29,7 @@ const userReducer = (state = initialState, action) => {
         return {
           ...state,
           loggingIn: false,
+          loggedIn: true,
           error: ""
         };
       case REGISTER_START:
