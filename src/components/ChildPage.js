@@ -1,50 +1,81 @@
 // map the list of Child cards
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { getChild, addChild } from '../redux/actions/userActions';
+import { connect } from 'react-redux';
 
-const ChildPage = props => {
-const [children, setchildren] = useState([])
-useEffect(() => {
-const getchildren = () => {
-    axios
-    .get('http://localhost:5000/api/children')
-    .then(response => {
-        setchildren(response.data);
-        console.log(response.data)
-    })
-    .catch(error => {
-        console.error('Server Error', error);
-    });
-}
+class ChildPage extends React.Component {
+    state = {
+        newChild: {
+            name: '',
+            age: ''
+        }
+    };
 
-getchildren();
-}, []);
-
-return (
-<div className="child-list">
-    {children.map(child => (
-    <Link to={`/children/${child.id}`}>
-    <childDetails key={child.id} child={child} />
-    </Link>
-    ))}
-</div>
-);
-}
-
-function childDetails({ child }) {
-const { name, age } = child;
-return (
-<div className="child-card">
-    <div className="child-name">
-    Name: <em>{name}</em>
+    childDetails({ child }) {
+    const { name, age } = child;
+    return (
+    <div className="child-card">
+        <div className="child-name">
+        Name: <em>{name}</em>
+        </div>
+        <div className="child-age">
+        Age: <strong>{age}</strong>
+        </div>
     </div>
-    <div className="child-age">
-    Age: <strong>{age}</strong>
-    </div>
-</div>
-);
+    )
+    }
+
+    addNewChild = event => {
+        event.preventDefault();
+        this.props.addChild(this.state.newChild);
+    }
+
+    changeHandler = event => {
+        this.setState({
+          newChild: {
+            ...this.state.newChild,
+            [event.target.name]: event.target.value
+          }
+        });
+      };
+
+    render() {
+        return (
+        <div>
+            <form onSumbit={this.addNewChild}>
+                <input
+                    type="text"
+                    name="name"
+                    value={this.state.newChild.name}
+                    onChange={this.changeHandler}
+                    placeholder="name"
+                />
+                <input
+                    type="number"
+                    name="age"
+                    value={this.state.newChild.age}
+                    onChange={this.changeHandler}
+                    placeholder="age"
+                />
+                <button onClick={this.addNewChild}>Add Child</button>
+            </form>
+            <div className="child-list">
+                {this.props.children.map(child => (
+                <Link to={`/children/${child.id}`}> {/*probably different url*/}
+                <childDetails key={child.id} child={child} />
+                </Link>
+                ))}
+            </div>
+        </div>
+        )
+    }
 }
 
-export default ChildPage;
+const mapStateToProps = state => ({
+    error: state.error,
+    children: state.children
+  });
+  
+export default connect( mapStateToProps, { getChild, addChild })(ChildPage);
