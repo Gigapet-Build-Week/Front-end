@@ -14,8 +14,9 @@ class LoginForm extends React.Component {
       password: ""
     }
   };
-
+  
   handleChange = event => {
+    //console.log(event.target.value);
     this.setState({
       credentials: {
         ...this.state.credentials,
@@ -25,6 +26,7 @@ class LoginForm extends React.Component {
   };
 
   handleSubmit = event => {
+    //console.log(event);
     event.preventDefault();
     this.props.login(this.state.credentials)
     .then(response => {
@@ -33,14 +35,15 @@ class LoginForm extends React.Component {
       }
     })
     .catch(error => {
-      console.log('Login Error:', error);
+      console.log('handleSubmit Error:', error);
     })
   };
 
   render() {
+    //console.log(this.props.login);
     return (
       <div>
-        <form onSubmit={this.handleSumbmit}>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" placeholder="Username" name="username" value={this.state.credentials.username} onChange={this.handleChange} />
           <input type="text" placeholder="Password" name="password" value={this.state.credentials.password} onChange={this.handleChange} />
           <button type='submit'>Submit</button>
