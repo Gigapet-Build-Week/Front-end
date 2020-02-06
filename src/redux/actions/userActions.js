@@ -12,7 +12,7 @@ export const ADD_CHILD = "ADD_CHILD";
 export const login = creds => dispatch => {
     dispatch({ type: LOGIN_START });
     return authAxios()
-    .post("/login", creds) //possible different name for page
+    .post("/auth/login", creds) //possible different name for page
     .then(response => {
       localStorage.setItem("token", response.data.payload);
       dispatch({ type: LOGIN_SUCCESS });
@@ -24,7 +24,7 @@ export const login = creds => dispatch => {
 export const register = creds => dispatch => {
     dispatch({ type: REGISTER_START });
     return authAxios()
-    .post("/register", creds) //possible different name for page
+    .post("/auth/register", creds) //possible different name for page
     .then(response => {
       localStorage.setItem("token", response.data.payload);
       dispatch({ type: REGISTER_SUCCESS });
@@ -37,7 +37,7 @@ export const getChild = () => dispatch => {
     /*import with Router? */
     dispatch({ GET_CHILD_START })
     authAxios()
-    .get("/children")
+    .get("/users/children")
     .then(response => {
         dispatch({ type: GET_CHILD_SUCCESS, payload: response.data }) 
     })
