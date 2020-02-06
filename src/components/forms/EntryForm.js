@@ -13,15 +13,15 @@ class EntryForm extends React.Component {
 
   //handleChange (more than likely similar to others)
   
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.newEntry(/*entry form state object*/)
   }
 
   render() {
     return (
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <select name="Category" ref={register}>
+      <form onSubmit={this.handleSubmit}>
+        <select name="Category">
           <option value="Fruits & Vegetable">FruitsVegetables</option>
           <option value=" Grain"> Grain</option>
           <option value=" Protein"> Protein</option>
@@ -29,7 +29,7 @@ class EntryForm extends React.Component {
           <option value=" Oils & Fats"> OilsFats</option>
           <option value=" Sugars"> Sugars</option>
         </select>
-        <input type="number" placeholder="Serving Size" name="Serving Size" ref={register({min: 0})} />
+        <input type="number" placeholder="Serving Size" name="Serving Size" />
 
         <input type="submit" />
       </form>

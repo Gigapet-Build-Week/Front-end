@@ -2,7 +2,7 @@ import React from 'react';
 import { feedGigapet, updateGigapet } from '../../redux/actions/childActions';
 import { connect } from 'react-redux';
 import HappyDoggo from './images/gigapet-happy-dog.png';
-import NeutralDoggo from './images/gigapet-neutal-dog.png';
+import NeutralDoggo from './images/gigapet-neutral-dog.png';
 import UnhappyDoggo from './images/gigapet-sad-dog.png';
 /*
 
