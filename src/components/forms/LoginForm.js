@@ -1,5 +1,5 @@
 import React from 'react';
-import { login } from '../../redux/actions/userActions';
+import { Login } from '../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import styled from 'styled-components';
@@ -28,7 +28,7 @@ class LoginForm extends React.Component {
   handleSubmit = event => {
     //console.log(event);
     event.preventDefault();
-    this.props.login(this.state.credentials)
+    this.props.Login(this.state.credentials)
     .then(response => {
       if (response) {
         this.props.history.push("/childPage");
@@ -61,4 +61,4 @@ const mapStateToProps = state => ({
   loggingIn: state.loggingIn
 });
 
-export default connect( mapStateToProps, { login })(LoginForm);
+export default connect( mapStateToProps, { Login })(LoginForm);

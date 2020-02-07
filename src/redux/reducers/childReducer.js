@@ -17,6 +17,12 @@ const initialState = {
       notes: ""
     },
     entryEditing: false,
+    entryToEdit: {
+      date: "",
+      category: "",
+      serving: 0,
+      notes: ""
+    },
     points: 15,
     status: "neutral",
     error: ""
