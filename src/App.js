@@ -12,12 +12,6 @@ import { PrivateRoute } from './utils/privateRoute';
 function App() {
   return (
     <div className="App">
-      <nav className="Header">
-
-
-
-      </nav>
-      <h1>Gigapet</h1>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/register" component={RegistryForm} />
         <PrivateRoute exact path="/mainPage" component={MainPage}/>
@@ -27,8 +21,3 @@ function App() {
 }
 
 export default App;
-
-// Code Sample
-// <SavedList list={savedList} />
-// <Route exact path="/" component={MovieList} />
-// <Route path="/movies/:id" component={Movie} />

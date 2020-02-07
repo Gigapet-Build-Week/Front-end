@@ -53,7 +53,7 @@ const userReducer = (state = initialState, action) => {
       case GET_CHILD_SUCCESS:
         return {
           ...state,
-          gettingChild: true,
+          gettingChild: false,
           children: action.payload,
           error: ""
         };
