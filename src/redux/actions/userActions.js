@@ -15,7 +15,7 @@ export const login = creds => dispatch => {
     .post("https://gigapet-health.herokuapp.com/api/auth/login", creds)
     .then(response => {
         console.log(response);
-      localStorage.setItem("token", response.data.payload);
+      localStorage.setItem("token", response.data.token);
       dispatch({ type: LOGIN_SUCCESS });
       return true;
     })
@@ -34,11 +34,11 @@ export const register = creds => dispatch => {
     .catch(error => console.log('Register error:', error));
 }
 
-export const getChild = () => dispatch => {
+export const getChild = (id) => dispatch => {
     /*import with Router? */
     dispatch({ type: GET_CHILD_START })
     authAxios()
-    .get("https://gigapet-health.herokuapp.com/api/users/children")
+    .get(`https://gigapet-health.herokuapp.com/api/users/children/${id}`)
     .then(response => {
         dispatch({ type: GET_CHILD_SUCCESS, payload: response.data }) 
     })
