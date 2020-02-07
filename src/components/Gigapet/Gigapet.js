@@ -6,18 +6,22 @@ import NeutralDoggo from './images/gigapet-neutral-dog.png';
 import UnhappyDoggo from './images/gigapet-sad-dog.png';
 
 class Gigapet extends React.Component {
+    state = {
+        points: 0,
+        status: 'neutral'
+    }
 
+    calculateTotalPoints = () => {
     /*
     map through data multiply each category by serving per category
     sum them to find "health" the value in database for the total.
-
-    
     */
+    }
 
-    determineGigapet = (totalPoints) => {
-        if (totalPoints >= 20) {
+    determineGigapet = () => {
+        if (this.state.status === 'happy') {
            return <img src={HappyDoggo} alt='Happy Gigapet' />
-        } else if (totalPoints >= 15) {
+        } else if (this.state.status === 'neutral') {
            return <img src={NeutralDoggo} alt='Neutral Gigapet' />
         } else {
            return <img src={UnhappyDoggo} alt='Unhappy Gigapet' />
@@ -25,9 +29,10 @@ class Gigapet extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div>
-                <h1>Gigapet Avatar</h1>
+                <p>Gigapet Avatar</p>
                 {this.determineGigapet()}
             </div>
         )
@@ -35,7 +40,11 @@ class Gigapet extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    
-  });
+    points: state.points,
+    status: state.status,
+    entry: state.entry
+    // points: state.child.points,
+    // status: state.child.status,
+});
   
-  export default connect( mapStateToProps, { feedGigapet, updateGigapet })(Gigapet);
+export default connect( mapStateToProps, { feedGigapet, updateGigapet })(Gigapet);

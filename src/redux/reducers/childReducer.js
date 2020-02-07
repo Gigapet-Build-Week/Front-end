@@ -17,7 +17,7 @@ const initialState = {
       notes: ""
     },
     entryEditing: false,
-    health: 15,
+    points: 15,
     status: "neutral",
     error: ""
 }
@@ -62,13 +62,13 @@ const childReducer = (state = initialState, action) => {
       case FEED_GIGAPET:
         return {
             ...state,
-            // health: action.payload.points * action.payload.servings,
+            health: action.payload.points * action.payload.servings,
             error: ""
         };
       case UPDATE_GIGAPET:
         return {
             ...state,
-            // status: action.payload,
+            status: action.payload,
             error: ""
         };
       default:

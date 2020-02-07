@@ -13,6 +13,10 @@ class ChildPage extends React.Component {
         }
     };
 
+    componentDidMount() {
+        this.props.getChild();
+    }
+
     childDetails({ child }) {
     const { name, age } = child;
     return (
@@ -42,9 +46,15 @@ class ChildPage extends React.Component {
       };
 
     render() {
+        console.log(this.props);
         return (
         <div>
-            <form onSumbit={this.addNewChild}>
+            <div className="header">
+                <Link to={"/"}>Sign Out</Link>
+                <Link to={"/mainPage"}>MainPage</Link>
+            </div>
+            <h1>Child Page</h1>
+            <form onSubmit={this.addNewChild}>
                 <input
                     type="text"
                     name="name"
@@ -62,11 +72,11 @@ class ChildPage extends React.Component {
                 <button onClick={this.addNewChild}>Add Child</button>
             </form>
             <div className="child-list">
-                {this.props.children.map(child => (
-                <Link to={`/children/${child.id}`}> {/*probably different url*/}
+                {/* {this.props.children.map(child => (
+                <Link to={`/children/${child.id}`}>
                 <childDetails key={child.id} child={child} />
                 </Link>
-                ))}
+                ))} */}
             </div>
         </div>
         )
@@ -74,8 +84,9 @@ class ChildPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    error: state.error,
-    children: state.children
+    children: state.children,
+    gettingChild: state.gettingChild,
+    error: state.error
   });
   
-export default connect( mapStateToProps, { getChild, addChild })(ChildPage);
+export default connect(mapStateToProps, { getChild, addChild })(ChildPage);
