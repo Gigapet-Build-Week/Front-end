@@ -19,27 +19,27 @@ export const newEntry = entry => dispatch => {
     })
     .catch(error => console.log('Post error:', error)); 
 }
-export const editEntry = event => dispatch =>{
+export const editEntry = (event, entryToEdit) => dispatch =>{
     event.preventDefault()
     //put request
     dispatch({ type: EDIT_ENTRY_START })
     authAxios()
-    .put(/*`/entry url/${entryToEdit.id}`, entryToEdit*/)
+    .put(`/${entryToEdit.id}`, entryToEdit)
     .then(response => {
+        console.log('editEntry response.data', response.data);
         dispatch({ type: EDIT_ENTRY_SUCCESS, payload: response.data })
-        /* figure out with state how to establish edit */
     })
     .catch(error => console.log('Put error:', error));
 }
 
-export const deleteEntry = (/*Entry from form*/) => dispatch =>{
+export const deleteEntry = entry => dispatch =>{
     //delete request
-    dispatch({ type: EDIT_ENTRY_START })
+    dispatch({ type: DELETE_ENTRY_START })
     authAxios()
-    .delete(/*`/entry url/${entry.id}`*/)
+    .delete(`/entry url/${entry.id}`)
     .then(response => {
-       dispatch({ type: EDIT_ENTRY_SUCCESS, payload: response.data})
-       /* figure out with state how to establish delete */
+        console.log('deleteEntry response.data', response.data);
+       dispatch({ type: DELETE_ENTRY_SUCCESS, payload: response.data})
     })
     .catch(error => console.log('Delete error:', error))
 }

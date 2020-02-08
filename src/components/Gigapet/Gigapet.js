@@ -8,7 +8,7 @@ import UnhappyDoggo from './images/gigapet-sad-dog.png';
 class Gigapet extends React.Component {
     state = {
         points: 0,
-        status: 'neutral'
+        status: 'happy'
     }
 
     calculateTotalPoints = () => {

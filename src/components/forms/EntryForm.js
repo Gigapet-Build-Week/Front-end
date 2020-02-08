@@ -1,5 +1,5 @@
 import React from 'react';
-import { newEntry } from '../../redux/actions/childActions'; //can add editEntry, deleteEntry
+import { newEntry, editEntry } from '../../redux/actions/childActions'; //can add editEntry, deleteEntry
 import { connect } from 'react-redux';
 //import { useForm } from 'react-hook-form';
 //import styled from 'styled-components';
@@ -20,6 +20,7 @@ class EntryForm extends React.Component {
 
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
         <select name="Category">
           <option value="Fruits & Vegetable">FruitsVegetables</option>
@@ -32,13 +33,29 @@ class EntryForm extends React.Component {
         <input type="number" placeholder="Serving Size" name="Serving Size" />
 
         <input type="submit" />
-      </form>
+        </form>
+        {this.entryEditing && (
+          <form onSubmit={this.editEntry}>
+          <select name="Category">
+            <option value="Fruits & Vegetable">FruitsVegetables</option>
+            <option value=" Grain"> Grain</option>
+            <option value=" Protein"> Protein</option>
+            <option value=" Dairy"> Dairy</option>
+            <option value=" Oils & Fats"> OilsFats</option>
+            <option value=" Sugars"> Sugars</option>
+          </select>
+          <input type="number" placeholder="Serving Size" name="Serving Size" />
+  
+          <input type="submit" />
+          </form>
+        )}
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  /*Entry state from reducer */
+  entryEditing: state.entryEditing
 });
 
-export default connect( mapStateToProps, { newEntry })(EntryForm);
+export default connect( mapStateToProps, { newEntry, editEntry })(EntryForm);

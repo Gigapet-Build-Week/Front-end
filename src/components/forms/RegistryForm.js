@@ -1,5 +1,5 @@
 import React from "react";
-import { register } from '../../redux/actions/userActions';
+import { Register } from '../../redux/actions/userActions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -61,4 +61,4 @@ const mapStateToProps = state => ({
   registering: state.registering
 });
 
-export default connect( mapStateToProps, { register })(RegistryForm);
+export default connect( mapStateToProps, { Register })(RegistryForm);

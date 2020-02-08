@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getChild, addChild } from '../redux/actions/userActions';
+import { addChild } from '../redux/actions/userActions';
 import { connect } from 'react-redux';
 
 class ChildPage extends React.Component {
@@ -12,10 +12,6 @@ class ChildPage extends React.Component {
             age: ''
         }
     };
-
-    componentDidMount() {
-        this.props.getChild();
-    }
 
     childDetails({ child }) {
     const { name, age } = child;
@@ -84,9 +80,9 @@ class ChildPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    children: state.children,
+    children: state.child.children,
     gettingChild: state.gettingChild,
     error: state.error
   });
   
-export default connect(mapStateToProps, { getChild, addChild })(ChildPage);
+export default connect(mapStateToProps, { addChild })(ChildPage);

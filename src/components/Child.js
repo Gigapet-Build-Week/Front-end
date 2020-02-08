@@ -1,32 +1,24 @@
 // child's name and age
 
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { getChild } from '../../redux/actions/userActions';
+import { connect } from 'react-redux';
 
 const Child = (props) => {
-const [child, setchild] = useState();
+console.log('props in Child',props);
+console.log('this.state.props in Child',this.state.props)
+console.log('this.children in Child',this.children);
 
 useEffect(() => {
 const id = props.match.params.id;
-
-
-    axios
-    .get(`http://localhost:5000/api/childs/${id}`)
-    .then(response => {
-        setchild(response.data);
-        console.log(response.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-
+this.props.getChild(id);
 },[]);
 
-if (!child) {
+if (!this.children) {
 return <div>Loading child information...</div>;
 }
 
-const { name, age } = child;
+const { name, age } = this.children;
 return (
 <div className="save-wrapper">
     <div className="child-card">
@@ -41,4 +33,8 @@ return (
 );
 }
 
-export default Child;
+const mapStateToProps = state => ({
+   children: state.children
+  });
+  
+  export default connect( mapStateToProps, { getChild })(Child);
