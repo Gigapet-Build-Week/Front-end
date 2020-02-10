@@ -1,6 +1,3 @@
-// Where entryform and gigapet will be
-
-
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Gigapet from './Gigapet/Gigapet';
@@ -13,10 +10,9 @@ export default function MainPage() {
                 <Link to={"/"}>Sign Out</Link>
                 <Link to={"/childPage"}>ChildPage</Link>
             </div>
-      <h1>MainPage</h1>
       <EntryForm />
+      <h1>My Gigapet</h1>
       <Gigapet />
     </div>
   )
 }
-

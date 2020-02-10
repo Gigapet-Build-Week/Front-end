@@ -4,7 +4,13 @@ import { connect } from 'react-redux';
 import HappyDoggo from './images/gigapet-happy-dog.png';
 import NeutralDoggo from './images/gigapet-neutral-dog.png';
 import UnhappyDoggo from './images/gigapet-sad-dog.png';
+import styled from 'styled-components';
 
+const PetCarrier = styled.div`
+position: absolute;
+top: 50%;
+left: 25%;
+`;
 class Gigapet extends React.Component {
     state = {
         points: 0,
@@ -31,10 +37,9 @@ class Gigapet extends React.Component {
     render() {
         console.log(this.props)
         return (
-            <div>
-                <p>Gigapet Avatar</p>
+            <PetCarrier className = "PetCarrier">
                 {this.determineGigapet()}
-            </div>
+            </PetCarrier>
         )
     }
 }
@@ -46,5 +51,5 @@ const mapStateToProps = state => ({
     // points: state.child.points,
     // status: state.child.status,
 });
-  
+
 export default connect( mapStateToProps, { feedGigapet, updateGigapet })(Gigapet);
