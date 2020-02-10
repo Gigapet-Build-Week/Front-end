@@ -4,6 +4,49 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { addChild } from '../redux/actions/userActions';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
+
+const FormContainer = styled.div`
+position: absolute;
+width: 50%;
+height: 65%;
+top: 10%;
+left: 25%;
+background: #e96a2b;
+border-radius: 10px;
+`;
+
+const ChildStyle = styled.form`
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+input {
+  width: 50%;
+  height: 50%;
+  padding: 2% 1%;
+  margin: 2% 0;
+  font-size: 150%;
+  box-sizing: border-box;
+  background-color: DarkSlateBlue;
+  color: OldLace;
+}
+
+input:focus {
+  border: 3px solid #2f4f4f;
+}
+
+[type="button"] {
+  background-color: #4CAF50;
+  border: none;
+  color: OldLace;
+  padding: 3% 3%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 150%;
+}
+`;
 
 class ChildPage extends React.Component {
     state = {
@@ -44,13 +87,13 @@ class ChildPage extends React.Component {
     render() {
         console.log(this.props);
         return (
-        <div>
+        <FormContainer>
             <div className="header">
                 <Link to={"/"}>Sign Out</Link>
                 <Link to={"/mainPage"}>MainPage</Link>
             </div>
             <h1>Child Page</h1>
-            <form onSubmit={this.addNewChild}>
+            <ChildStyle className="ChildStyle" onSubmit={this.addNewChild}>
                 <input
                     type="text"
                     name="name"
@@ -65,8 +108,8 @@ class ChildPage extends React.Component {
                     onChange={this.changeHandler}
                     placeholder="age"
                 />
-                <button onClick={this.addNewChild}>Add Child</button>
-            </form>
+                <button type="button" onClick={this.addNewChild}>Add Child</button>
+            </ChildStyle>
             <div className="child-list">
                 {/* {this.props.children.map(child => (
                 <Link to={`/children/${child.id}`}>
@@ -74,7 +117,7 @@ class ChildPage extends React.Component {
                 </Link>
                 ))} */}
             </div>
-        </div>
+        </FormContainer>
         )
     }
 }
@@ -84,5 +127,5 @@ const mapStateToProps = state => ({
     gettingChild: state.gettingChild,
     error: state.error
   });
-  
+
 export default connect(mapStateToProps, { addChild })(ChildPage);
